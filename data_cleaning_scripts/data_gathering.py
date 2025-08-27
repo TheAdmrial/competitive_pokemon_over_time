@@ -11,7 +11,8 @@ def get_pokedex_data():
         p = pb.pokemon(i)
         stats = {s.stat.name: s.base_stat for s in p.stats}
         row = {
-            "name": p.name
+            "id":p.id
+            , "name": p.name
             , "type_1": p.types[0].type.name
             , 'type_2': p.types[1].type.name if len(p.types) > 1 else None
             , 'hp': stats['hp']
@@ -23,7 +24,7 @@ def get_pokedex_data():
             , 'stat_total': sum(stats.values())
         }
         data.append(row)
-        print(f'{p.name} has been added.')
+        print(f'{p.id} {p.name} has been added.')
     return pl.DataFrame(data=data)
 
 
